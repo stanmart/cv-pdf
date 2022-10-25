@@ -5,7 +5,7 @@ ASSETS = $(wildcard assets/*)
 
 all: out/cv_sm_short.pdf out/cv_sm.pdf out/cv_sm_long.pdf
 
-out/cv_sm_short.pdf: cv_template.tex SECTIONS ASSETS
+out/cv_sm_short.pdf: cv_template.tex $(SECTIONS) $(ASSETS)
 	latexmk \
 		-pdf \
 		-quiet \
@@ -16,7 +16,7 @@ out/cv_sm_short.pdf: cv_template.tex SECTIONS ASSETS
 		cv_template.tex
 	latexmk -outdir=out -jobname=cv_sm_short -c
 
-out/cv_sm.pdf: cv_template.tex SECTIONS ASSETS
+out/cv_sm.pdf: cv_template.tex $(SECTIONS) $(ASSETS)
 	latexmk \
 		-pdf \
 		-quiet \
@@ -27,7 +27,7 @@ out/cv_sm.pdf: cv_template.tex SECTIONS ASSETS
 		cv_template.tex
 	latexmk -outdir=out -jobname=cv_sm -c
 
-out/cv_sm_long.pdf: cv_template.tex SECTIONS ASSETS
+out/cv_sm_long.pdf: cv_template.tex $(SECTIONS) $(ASSETS)
 	latexmk \
 		-pdf \
 		-quiet \
