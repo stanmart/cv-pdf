@@ -6,8 +6,6 @@
 \usepackage{microtype}
 \usepackage{etoolbox}
 
-\def\mediumform{true}
-
 \newtoggle{medium}
 \newtoggle{long}
 
@@ -43,29 +41,34 @@
 \makecvtitle
 
 \iftoggle{long}{\input{sections/education_long.tex}}{\input{sections/education.tex}}
+\iftoggle{long}{\input{sections/extracurricular.tex}}{}
 
 \iftoggle{medium}{\input{sections/working_experience.tex}}{\input{sections/working_experience_short.tex}}
 
-\iftoggle{long}{\input{sections/extracurricular.tex}}{}
 
+\iftoggle{long}{\newpage}{}
 \iftoggle{long}{\input{sections/teaching.tex}}{\input{sections/teaching_short.tex}}
 
-\iftoggle{medium}{\input{sections/publications_selected.tex}}{}
-\iftoggle{long}{\input{sections/publications_all.tex}}{}
+\iftoggle{long}{}{\iftoggle{medium}{\newpage}{}}
+\iftoggle{long}{\input{sections/publications_all.tex}}{\iftoggle{medium}{\input{sections/publications_selected.tex}}{}}
 
+\iftoggle{long}{\newpage}{}
 \iftoggle{medium}{\input{sections/conferences.tex}}{}
-
-\iftoggle{medium}{\input{sections/awards.tex}}{}
-\iftoggle{long}{\input{sections/awards_long.tex}}{}
 
 \input{sections/computer_skills.tex}
 \iftoggle{medium}{\input{sections/computer_skills_additional.tex}}{}
+
+\iftoggle{long}{}{\iftoggle{medium}{\newpage}{}}
+\iftoggle{long}{\input{sections/awards_long.tex}}{\iftoggle{medium}{\input{sections/awards.tex}}{}}
+
+\iftoggle{long}{\newpage}{}
+\iftoggle{medium}{\input{sections/courses.tex}}{}
 
 \input{sections/languages.tex}
 
 \iftoggle{medium}{\input{sections/research_interests.tex}}{}
 
-\iftoggle{long}{\input{sections/other_interests.tex}}{}
+% \iftoggle{long}{\input{sections/other_interests.tex}}{}
 
 \end{document}
 
