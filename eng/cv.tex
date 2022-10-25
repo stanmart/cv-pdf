@@ -1,0 +1,71 @@
+\documentclass[11pt, a4paper, sans]{moderncv}
+
+\usepackage[utf8]{inputenc}
+% \usepackage[magyar]{babel}
+\usepackage{fullpage}
+\usepackage{microtype}
+\usepackage{etoolbox}
+
+\def\mediumform{true}
+
+\newtoggle{medium}
+\newtoggle{long}
+
+\ifdefined\longform
+    \toggletrue{long}
+    \toggletrue{medium}
+\fi
+\ifdefined\mediumform
+    \toggletrue{medium}
+\fi
+
+\moderncvstyle{casual} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+
+\firstname{Martin}
+\familyname{Stancsics}
+
+% \title{Curriculum Vitae}
+\address{32 Zwickystrasse}{Wallisellen 8304}{Switzerland}
+\mobile{+41 78 406 9377}
+\email{martin.stancsics@gmail.com}
+%\extrainfo{additional information}
+\photo[70pt][0.4pt]{assets/photo_small.jpg} % The first bracket is the picture height, the second is the thickness of the frame around the picture (0pt for no frame)
+\homepage{stanmart.github.io}
+
+\renewcommand{\listitemsymbol}{-~}
+
+\usepackage{xpatch}
+\xpatchcmd{\cventry}{.\Pstrut}{\strut}{}{}
+
+\begin{document}
+
+\makecvtitle
+
+\iftoggle{long}{\input{sections/education_long.tex}}{\input{sections/education.tex}}
+
+\iftoggle{medium}{\input{sections/working_experience.tex}}{\input{sections/working_experience_short.tex}}
+
+\iftoggle{long}{\input{sections/extracurricular.tex}}{}
+
+\iftoggle{long}{\input{sections/teaching.tex}}{\input{sections/teaching_short.tex}}
+
+\iftoggle{medium}{\input{sections/publications_selected.tex}}{}
+\iftoggle{long}{\input{sections/publications_all.tex}}{}
+
+\iftoggle{medium}{\input{sections/conferences.tex}}{}
+
+\iftoggle{medium}{\input{sections/awards.tex}}{}
+\iftoggle{long}{\input{sections/awards_long.tex}}{}
+
+\input{sections/computer_skills.tex}
+\iftoggle{medium}{\input{sections/computer_skills_additional.tex}}{}
+
+\input{sections/languages.tex}
+
+\iftoggle{medium}{\input{sections/research_interests.tex}}{}
+
+\iftoggle{long}{\input{sections/other_interests.tex}}{}
+
+\end{document}
+
