@@ -1,4 +1,4 @@
-SUBDIRS = eng hu
+SUBDIRS = en hu
 
 dist : $(SUBDIRS)
 	mkdir -p dist
