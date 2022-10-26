@@ -1,8 +1,8 @@
-SUBDIRS = eng
+SUBDIRS = eng hu
 
 dist : $(SUBDIRS)
 	mkdir -p dist
-	cp eng/out/*.pdf dist/
+	cp $(addsuffix /out/*.pdf,$(SUBDIRS)) dist/
 
 $(SUBDIRS) :
 	$(MAKE) -C $@
