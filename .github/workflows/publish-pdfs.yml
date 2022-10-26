@@ -1,0 +1,33 @@
+
+name: Build and push pdf-s to a separate branch
+
+on:
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Allow one concurrent deployment
+concurrency:
+  group: "publish-pdfs"
+  cancel-in-progress: true
+
+jobs:
+
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v3
+    
+      - name: Build
+        uses: docker://stanmart/cv-builder:latest
+
+      - name: Publish
+        uses: seanmiddleditch/gha-publish-to-git@master
+        with:
+          branch: pdfs
+          github_token: '${{ secrets.GITHUB_TOKEN  }}'
+          source_folder: dist
