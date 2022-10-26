@@ -39,7 +39,7 @@ RUN ln -s /root/bin/* /usr/local/bin
 RUN /root/.TinyTeX/bin/*/tlmgr path add
 
 RUN apk update && apk add make
-RUN tlmgr install colortbl moderncv preprint fontawesome5 pgf multirow arydshln xpatch
+RUN tlmgr install colortbl moderncv preprint fontawesome5 pgf multirow arydshln xpatch babel-hungarian
 
 WORKDIR /github/workspace
 ENTRYPOINT make
