@@ -26,8 +26,7 @@ jobs:
         uses: docker://stanmart/cv-builder:latest
 
       - name: Publish
-        uses: seanmiddleditch/gha-publish-to-git@master
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: pdfs
-          github_token: '${{ secrets.GITHUB_TOKEN  }}'
-          source_folder: dist
+          folder: dist
