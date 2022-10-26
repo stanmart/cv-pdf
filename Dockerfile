@@ -40,3 +40,6 @@ RUN /root/.TinyTeX/bin/*/tlmgr path add
 
 RUN apk update && apk add make
 RUN tlmgr install colortbl moderncv preprint fontawesome5 pgf multirow arydshln xpatch
+
+WORKDIR /github/workspace
+ENTRYPOINT make
