@@ -28,7 +28,8 @@ RUN apk update && \
         wget \
         cairo-gobject \
         poppler-glib \
-        xz
+        xz \
+        make
 
 WORKDIR /root
 
@@ -38,7 +39,6 @@ COPY --from=build /usr/local/bin/pdf2svg /usr/local/bin
 RUN ln -s /root/bin/* /usr/local/bin
 RUN /root/.TinyTeX/bin/*/tlmgr path add
 
-RUN apk update && apk add make
 RUN tlmgr install colortbl moderncv preprint fontawesome5 pgf multirow arydshln xpatch babel-hungarian
 
 WORKDIR /github/workspace
