@@ -1,3 +1,7 @@
+![Publish pdfs](https://github.com/stanmart/cv-pdf/actions/workflows/publish-pdfs.yml/badge.svg)
+![Docker image size](https://shields.io/docker/image-size/stanmart/cv-builder/latest)
+![License](https://shields.io/github/license/stanmart/cv-pdf)
+
 # cv-pdf
 This repo contains my most up-to-date cv in two languages (English and Hungarian) and three different versions (short, normal, long).
 
