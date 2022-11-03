@@ -42,7 +42,8 @@ COPY --from=build /usr/local/bin/pdf2svg /usr/local/bin
 RUN ln -s /root/bin/* /usr/local/bin
 RUN /root/.TinyTeX/bin/*/tlmgr path add
 
-RUN tlmgr install colortbl moderncv preprint fontawesome5 pgf multirow arydshln xpatch babel-hungarian
+RUN tlmgr install colortbl moderncv preprint fontawesome5 pgf multirow arydshln xpatch
+RUN tlmgr install $(tlmgr info --data name | grep 'babel-' | tr '\n' ' ')
 
 WORKDIR /github/workspace
 ENTRYPOINT make
