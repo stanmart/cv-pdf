@@ -22,6 +22,9 @@ RUN \
 
 FROM frolvlad/alpine-glibc AS runtime
 
+# Must set OSTYPE manually for Alpine Linux
+ARG OSTYPE="linux-musl"
+
 RUN apk update && \
     apk --no-cache add \
         perl \
