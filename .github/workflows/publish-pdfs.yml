@@ -1,5 +1,5 @@
 
-name: Build and push pdf-s to a separate branch
+name: Build and publish pdfs
 
 on:
   push:
